@@ -3,6 +3,7 @@
  */
 package gui;
 
+import automata_1.BoundaryCondition;
 import automata_1.CellularAutomat;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
@@ -31,8 +31,6 @@ public class FXMLController implements Initializable {
     private Canvas canvas;
     @FXML
     private TextField textField;
-    @FXML
-    private Button button;
     @FXML
     private Label info;
     @FXML
@@ -55,10 +53,15 @@ public class FXMLController implements Initializable {
             info.setText("");
 
             CellViewer[] cv = {
-                new GuiCellViewer(this, (int) scrollBar.getValue()), //new ConsoleCellViewer()
+                new GuiCellViewer(this, (int) scrollBar.getValue()),
+                //new ConsoleCellViewer()
             };
 
-            ca = new CellularAutomat((int) canvas.getWidth() / (int) scrollBar.getValue(), rule, cv);
+            if (comboBox.getValue().equals("Periodyczny")) {
+                ca = new CellularAutomat((int) canvas.getWidth() / (int) scrollBar.getValue(), rule, cv, BoundaryCondition.PERIODIC);
+            } else {
+                ca = new CellularAutomat((int) canvas.getWidth() / (int) scrollBar.getValue(), rule, cv, BoundaryCondition.CLOSED);
+            }
 
             view();
 
@@ -69,8 +72,6 @@ public class FXMLController implements Initializable {
 
     public void dragAction() {
         cellSize.setText(String.valueOf((int) scrollBar.getValue()));
-        // System.out.println(scrollBar.getValue());
-
     }
 
     public void view() {
@@ -86,9 +87,13 @@ public class FXMLController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         cellSize.setText(String.valueOf((int) scrollBar.getValue()));
         scrollBar.valueProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
             cellSize.setText(String.valueOf((int) scrollBar.getValue()));

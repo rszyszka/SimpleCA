@@ -10,5 +10,6 @@ import automata_1.Cell;
  * @author Szysz
  */
 public interface CellViewer {
+
     public void view(Cell cell, int i, int iteration);
 }

@@ -7,7 +7,7 @@ package automata_1;
  *
  * @author Szysz
  */
-public class Cell{
+public class Cell {
 
     private int status, left, right;
     private int rule;
@@ -43,6 +43,11 @@ public class Cell{
     public void update(Cell prev, Cell next) {
         this.left = prev.status;
         this.right = next.status;
+    }
+
+    public void update(int prev, int next) {
+        this.left = prev;
+        this.right = next;
     }
 
     public int getBit(int n, int k) {
