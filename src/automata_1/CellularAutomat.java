@@ -3,6 +3,9 @@
  */
 package automata_1;
 
+import java.util.Arrays;
+import viewer.CellViewer;
+
 /**
  *
  * @author Szysz
@@ -11,8 +14,20 @@ public class CellularAutomat {
 
     private final Cell automata[];
     private final int size;
+    
+    private int iteration;
 
-    public CellularAutomat(int tab[], int size, int rule) {
+    private final CellViewer viewers[];
+
+    public CellularAutomat(int size, int rule, CellViewer viewers[]) {
+        
+        this.iteration = 0;
+        
+        int tab[] = new int[size];
+        Arrays.fill(tab, 0);
+        tab[size/2] = 1;
+        
+        this.viewers = viewers;
         this.size = size;
 
         automata = new Cell[size];
@@ -31,9 +46,12 @@ public class CellularAutomat {
 
     public void view() {
         for (int i = 0; i < size; i++) {
-            automata[i].view();
+            for (CellViewer cv : viewers) {
+                cv.view(automata[i], i, iteration);
+            }
         }
         System.out.println("");
+        iteration++;
     }
 
     public void nextIteration() {
@@ -49,8 +67,11 @@ public class CellularAutomat {
             } else {
                 automata[i].update(automata[i - 1], automata[i + 1]);
             }
-            automata[i].view();
+            for (CellViewer cv : viewers) {
+                cv.view(automata[i], i, this.iteration);
+            }
         }
         System.out.println("");
+        this.iteration++;
     }
 }

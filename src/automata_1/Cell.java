@@ -7,7 +7,7 @@ package automata_1;
  *
  * @author Szysz
  */
-public class Cell {
+public class Cell{
 
     private int status, left, right;
     private int rule;
@@ -37,14 +37,6 @@ public class Cell {
             status = getBit(rule, 6);
         } else if (left == 1 && status == 1 && right == 1) {
             status = getBit(rule, 7);
-        }
-    }
-
-    public void view() {
-        if (status == 1) {
-            System.out.print("*");
-        } else {
-            System.out.print(" ");
         }
     }
 
