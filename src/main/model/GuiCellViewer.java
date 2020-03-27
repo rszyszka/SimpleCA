@@ -1,14 +1,9 @@
-/*
- * Copyright (C) 2018 Szysz
- */
 package main.model;
 
 import javafx.scene.canvas.GraphicsContext;
 import main.gui.FXMLController;
 
-/**
- * @author Szysz
- */
+
 public class GuiCellViewer {
     private FXMLController controller;
     private int size;

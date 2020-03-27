@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2018 Szysz
- */
 package main.gui;
 
 import javafx.fxml.FXML;
@@ -10,19 +7,16 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import main.model.Cell;
 import main.model.GuiCellViewer;
-import main.model.SimpleCellularAutomatonRulesSimulation;
 import main.model.Space;
 import main.model.bc.BoundaryCondition;
+import main.model.simulation.ByteRulesSimulation;
+import main.model.simulation.SimulationUpdateSchema;
 
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * FXML Controller class
- *
- * @author Szysz
- */
+
 public class FXMLController implements Initializable {
 
     @FXML
@@ -40,7 +34,9 @@ public class FXMLController implements Initializable {
     @FXML
     private Label probabilityLabel;
     @FXML
-    private ComboBox<BoundaryCondition.Type> comboBox;
+    private ComboBox<BoundaryCondition.Type> boundaryConditionComboBox;
+    @FXML
+    private ComboBox<SimulationUpdateSchema> updateSchemaComboBox;
     @FXML
     private CheckBox checkBox;
     private Space space;
@@ -58,8 +54,11 @@ public class FXMLController implements Initializable {
             int rule = Integer.parseInt(textField.getText().trim());
             space = new Space(spaceSize);
             determineRandomDistribution();
-            SimpleCellularAutomatonRulesSimulation automaton = new SimpleCellularAutomatonRulesSimulation(
-                    space, rule, BoundaryCondition.getInstance(comboBox.getValue(), space)
+
+            ByteRulesSimulation automaton = ByteRulesSimulation.getInstance(
+                    rule, space
+                    , BoundaryCondition.getInstance(boundaryConditionComboBox.getValue(), space)
+                    , updateSchemaComboBox.getValue()
             );
 
             for (int i = 0; i < spaceSize; i++) {
@@ -106,8 +105,10 @@ public class FXMLController implements Initializable {
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             probabilityScrollBar.setDisable(oldValue);
         });
-        comboBox.getItems().addAll(BoundaryCondition.Type.values());
-        comboBox.getSelectionModel().selectFirst();
+        boundaryConditionComboBox.getItems().addAll(BoundaryCondition.Type.values());
+        boundaryConditionComboBox.getSelectionModel().selectFirst();
+        updateSchemaComboBox.getItems().addAll(SimulationUpdateSchema.values());
+        updateSchemaComboBox.getSelectionModel().selectFirst();
     }
 
 }

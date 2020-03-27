@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2018 Szysz
- */
 package main;
 
 import javafx.application.Application;
@@ -9,10 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Szysz
- */
+
 public class Main extends Application {
 
     @Override

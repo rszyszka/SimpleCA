@@ -1,11 +1,6 @@
-/*
- * Copyright (C) 2018 Szysz
- */
 package main.model;
 
-/**
- * @author Szysz
- */
+
 public class Cell {
 
     private int status;

@@ -22,8 +22,8 @@ public abstract class BoundaryCondition {
 
 
     public enum Type {
-        PERIODIC("Periodyczny"),
-        CLOSED("Zamknięty");
+        CLOSED("Zamknięty"),
+        PERIODIC("Periodyczny");
 
         private String description;
 

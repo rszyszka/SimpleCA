@@ -29,12 +29,19 @@
                             </VBox.margin>
                         </Separator>
                         <Label alignment="CENTER" prefHeight="21.0" prefWidth="210.0" text="Warunek brzegowy" />
-                        <ComboBox fx:id="comboBox" prefHeight="31.0" prefWidth="210.0" />
+                      <ComboBox fx:id="boundaryConditionComboBox" prefHeight="31.0" prefWidth="210.0"/>
                         <Separator prefWidth="200.0">
                             <VBox.margin>
                                 <Insets top="10.0" />
                             </VBox.margin>
                         </Separator>
+                      <Label alignment="CENTER" prefHeight="21.0" prefWidth="210.0" text="Schemat aktualizacji"/>
+                      <ComboBox fx:id="updateSchemaComboBox" prefHeight="31.0" prefWidth="210.0"/>
+                      <Separator prefWidth="200.0">
+                        <VBox.margin>
+                          <Insets top="10.0"/>
+                        </VBox.margin>
+                      </Separator>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="283.0" text="Cell size" textAlignment="CENTER" />
                         <ScrollBar fx:id="scrollBar" min="1.0" value="4.0"/>
                         <Label fx:id="cellSize" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="200.0" textAlignment="CENTER" />
