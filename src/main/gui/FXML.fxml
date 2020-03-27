@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollBar?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<AnchorPane id="AnchorPane" prefHeight="512.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLController">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="512.0" prefWidth="700.0"
+            xmlns="http://javafx.com/javafx/8.0.141" fx:controller="main.gui.FXMLController">
     <children>
         <HBox>
             <children>
-                <Canvas fx:id="canvas" height="900.0" width="1024.0" />
+                <Canvas fx:id="canvas" height="600.0" width="600.0"/>
                 <Separator orientation="VERTICAL" prefHeight="200.0" />
                 <VBox prefHeight="512.0" prefWidth="200.0">
                     <children>
@@ -43,8 +36,12 @@
                             </VBox.margin>
                         </Separator>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="283.0" text="Cell size" textAlignment="CENTER" />
-                        <ScrollBar fx:id="scrollBar" min="1.0" onSwipeLeft="#dragAction" onSwipeRight="#dragAction" value="4.0" />
+                        <ScrollBar fx:id="scrollBar" min="1.0" value="4.0"/>
                         <Label fx:id="cellSize" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="200.0" textAlignment="CENTER" />
+                        <CheckBox fx:id="checkBox" text="Losowy rozkład"/>
+                        <ScrollBar fx:id="probabilityScrollBar" max="1.0" value="0.25" unitIncrement="0.01"/>
+                        <Label fx:id="probabilityLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0"
+                               prefWidth="200.0" textAlignment="CENTER"/>
                         <Button fx:id="button" mnemonicParsing="false" onAction="#buttonAction" prefHeight="31.0" prefWidth="224.0" text="Draw">
                             <VBox.margin>
                                 <Insets top="20.0" />

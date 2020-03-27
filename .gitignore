@@ -1,3 +1,8 @@
+# Jetbrains project files
+.idea/
+target/
+*.iml
+
 # Compiled class file
 *.class
 
@@ -13,6 +18,7 @@
 # Package Files #
 *.jar
 *.war
+*.nar
 *.ear
 *.zip
 *.tar.gz
